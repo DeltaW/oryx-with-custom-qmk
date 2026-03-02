@@ -88,6 +88,12 @@ jobs:
           git add qmk_firmware
           git commit -m "✨(qmk): Update firmware" || echo "No QMK change"
           git push
+          
+      - name: Clone drashna modules
+        run: |
+          cd qmk_firmware
+          rm -rf modules/drashna
+          git clone https://github.com/drashna/qmk_modules.git modules/drashna
 
       - name: Build qmk docker image
         run: docker build -t qmk .
